@@ -7,12 +7,13 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta property="og:type" content="website">
-<meta property="og:title" content="1989_coding_interview">
-<meta property="og:url" content="https://0duru1.github.io/1989_coding_interview/tags/datastruct/index.html">
+<meta property="og:title" content="Search">
+<meta property="og:url" content="https://0duru1.github.io/1989_coding_interview/Search/index.html">
 <meta property="og:site_name" content="1989_coding_interview">
 <meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2017-12-27T21:44:39.253Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="1989_coding_interview">
+<meta name="twitter:title" content="Search">
     
     
         
@@ -32,7 +33,7 @@
         
     
     <!-- title -->
-    <title>1989_coding_interview</title>
+    <title>Search</title>
     <!-- styles -->
     <link rel="stylesheet" href="/1989_coding_interview/css/style.css">
     <!-- rss -->
@@ -76,37 +77,23 @@
 </header>
 
         
-        <div id="archive">
-  <ul class="post-list">
-    
-    
-    
-      
-      
-      
-      
-        <h2>2017</h2>
-      
-      <li class="post-item">
-        
-    <div class="meta">
-        <time datetime="2017-12-27T19:40:54.000Z" itemprop="datePublished">2017-12-28</time>
-    </div>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  
+    <section id="search">
+  <form>
+    <input type="text" class="search-input" id="search-input" placeholder="search...">
+  </form>
+  <div id="search-result"></div>
+  <p class="search-no-result">No results found</p>
+</section>
 
-
-        <span>
-    
-        <a class="" href="/1989_coding_interview/2017/12/28/welcome/">welcome</a>
-    
-
-
-<span>
-      </li>
-    
-  </ul>
+  
   
 
-</div>
+  <div class="content" itemprop="articleBody">
+    
+  </div>
+</article>
 
     </div>
     
@@ -145,6 +132,35 @@
 <script src="/1989_coding_interview/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
 <script src="/1989_coding_interview/js/main.js"></script>
 <!-- search -->
+
+  <script src="/1989_coding_interview/js/search.js"></script>
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input");
+    var $resultArea = $("#search-result");
+
+    inputArea.onfocus = function() {
+      var search_path = "search.xml";
+      if (search_path.length == 0) {
+        search_path = "search.xml";
+      }
+      var path = "/1989_coding_interview/" + search_path;
+      searchFunc(path, 'search-input', 'search-result');
+    }
+
+    inputArea.onkeydown = function(){
+        if(event.keyCode==13){
+            return false
+        }
+    }
+
+    $resultArea.bind("DOMNodeRemoved DOMNodeInserted", function(e) {
+        if (!$(e.target).text()) {
+            $(".search-no-result").show(200);
+        } else {
+            $(".search-no-result").hide();
+        }
+    })
+  </script>
 
 <!-- Google Analytics -->
 
